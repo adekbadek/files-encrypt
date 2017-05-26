@@ -7,11 +7,13 @@ files_folder="files"
 tar_filename="files.tar"
 files_encoded="files.enc"
 
-# check if password is provided
+# if no password is provided, ask for one
 if [ ! "$1" ]; then
-  echo "no password"; exit 1
+  echo 'pass:'
+  read -s password
+else
+  password="$1"
 fi
-password="$1"
 
 # check if folder or encrypted file exists
 if [ -d "$files_folder" ]; then
